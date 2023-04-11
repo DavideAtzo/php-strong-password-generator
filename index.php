@@ -30,7 +30,7 @@ function passGenerator($length)
         <div class="mx-3">
             <form action="index.php" method="GET">
                 <label for="pass_lenght" class="form-label">Lunghezza password:</label>
-                <input type="number" class="form-control" id="pass_lenght" name="pass_lenght">
+                <input type="number" class="form-control" id="pass_lenght" name="pass_lenght" min="6" max="20">
                 <button type="submit" class="btn btn-primary my-2">Crea</button>
             </form>
         </div>
