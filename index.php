@@ -1,6 +1,16 @@
 <?php
-$pass_lenght = $_POST['pass_lenght'];
-var_dump($pass_lenght)
+function passGenerator($length)
+{
+    $chars = "1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!#$%&*+?@[\]^_`~";
+    $passRandom = array();
+    $PassLength = strlen($chars) - 1;
+    for ($i = 0; $i < $length; $i++) {
+        $number = rand(0, $PassLength);
+        $passRandom[] =  $chars[$number];
+    }
+    return implode($passRandom);
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -18,12 +28,15 @@ var_dump($pass_lenght)
     <div class="container">
         <h1>Strong Password Generator</h1>
         <div class="mx-3">
-            <form action="index.php" method="POST">
+            <form action="index.php" method="GET">
                 <label for="pass_lenght" class="form-label">Lunghezza password:</label>
                 <input type="number" class="form-control" id="pass_lenght" name="pass_lenght">
                 <button type="submit" class="btn btn-primary my-2">Crea</button>
             </form>
         </div>
+    </div>
+    <div class="container">
+        <p>la tua bellissima password è: <?php echo passGenerator($_GET['pass_lenght']); ?></p>
     </div>
 </body>
 
